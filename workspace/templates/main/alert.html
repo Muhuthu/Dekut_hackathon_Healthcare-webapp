@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%extends 'index.html'%}
+    {% block title%}Medical QR Code - iCarePulse{% endblock%}
+</head>
+<body>
+    {% block content%}
+    <main>
+        <article>
+            <section class="main-home-page">
+                <section class="left-home-page">
+                    <div class="return-home">
+                        <a href="{{ url_for('blog.home')}}"><i class="fa-solid fa-home"></i><span>Home</span></a>
+                    </div>
+                    <div class="home-profile">
+                        <div class="back-profile">
+                            <p>
+                                Get your medical ID
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-recommendation">
+                        <div id="recommended"><span>Recommended conditions</span></div>
+                    </div>
+                    {% if qr_code %}
+                        <div class="generated-qr-code">
+                            <div class="qr-code">
+                                <h2>Medical QR Code</h2>
+                                <div>
+                                    <img src="{{ qr_code }}" alt="QR Code">
+                                </div>
+                            </div>
+
+                            <p><a href="/download/{{ img_path }}">Download QR Code <i class="fa-solid fa-download"></i></a></p>
+                        </div>
+                    {% endif %}
+
+                </section>
+                <section class="right-home-page">
+                    <div class="set-profile active">
+                        <h2>Emergency Information</h2>
+                        <form action="/generate" method="post">
+                            <div class="false_1 active">
+                                <div class="info-img">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span>Personal information</span>
+                                </div>
+                                <div class="profile-input">
+                                    <label for="name">Enter your name:</label>
+                                    <input type="name" name="name" id="name">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="contact">Enter your phone number:</label>
+                                    <input type="number" name="contact" id="contact">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="id">Enter your ID Number:</label>
+                                    <input type="number" name="id" id="id">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="address">Enter your address:</label>
+                                    <input type="text" name="address" id="address">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="age">Enter your age: </label>
+                                    <input type="age" name="age" id="age">
+                                </div>
+                            </div>
+                            <div class="false_2">
+                                <div class="info-img">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span>Next of Kin information</span>
+                                </div>
+                                <div class="profile-input">
+                                    <label for="name">Enter  name:</label>
+                                    <input type="name" name="Name" >
+                                </div>
+                                <div class="profile-input">
+                                    <label for="contact">Enter  phone number:</label>
+                                    <input type="number" name="Contact" >
+                                </div>
+                                <div class="profile-input">
+                                    <label for="id">Enter  ID Number:</label>
+                                    <input type="number" name="Id">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="address">Enter  address:</label>
+                                    <input type="text" name="Address" >
+                                </div>
+                            </div>
+                            <div class="false_3">
+                                <div class="info-img">
+                                    <i class="fa-solid fa-notes-medical"></i>
+                                    <span>Medical information</span>
+                                </div>
+                                <div class="info-img down-image">
+                                    <img src="{{ url_for('static', filename='img/chronic.png')}}" alt="">
+                                    <span>Chronic Medical Conditions</span>
+                                </div>
+                                <div class="profile-input">
+                                    <label for="chronic"></label>
+                                    <input type="text" name="chronic">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="chronic"></label>
+                                    <input type="text" name="chronic_1">
+                                </div>
+                                <div class="info-img down-image">
+                                    <img src="{{ url_for('static', filename='img/allergy.png')}}" alt="">
+                                    <span>Allergies</span>
+                                </div>
+                                <div class="profile-input">
+                                    <label for="allergy"></label>
+                                    <input type="text" name="allergy">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="allery_1"></label>
+                                    <input type="text" name="allergy_1" >
+                                </div>
+                            </div>
+                            <div class="false_4">
+                                <div class="info-img">
+                                    <i class="fa-solid fa-notes-medical"></i>
+                                    <span>Medical information</span>
+                                </div>
+                                <div class="info-img down-image">
+                                    <img src="{{ url_for('static', filename='img/mental.png')}}" alt="">
+                                    <span>Mental Health</span>
+                                </div>
+                                <div class="profile-input">
+                                    <label for="mental"></label>
+                                    <input type="text" name="mental">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="mental"></label>
+                                    <input type="text" name="mental_1">
+                                </div>
+                                <div class="info-img down-image">
+                                    <img src="{{ url_for('static', filename='img/medication.png')}}" alt="">
+                                    <span>Medications</span>
+                                </div>
+                                <div class="profile-input">
+                                    <label for="medications"></label>
+                                    <input type="text" name="medications">
+                                </div>
+                                <div class="profile-input">
+                                    <label for="medication"></label>
+                                    <input type="text" name="medications_1" >
+                                </div>
+                            </div>
+                            <div class="form-button-profile">
+                                    <div class="page-numbers">
+                                        <span class="page-number active">1</span>
+                                        <span class="page-number_1">2</span>
+                                        <span class="page-number_2">3</span>
+                                        <span class="page-number_3">4</span>
+                                    </div>
+
+                                <div class="submit-button">
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="set-profile" id="recommendation-image">
+                        <div class="resize-img">
+                            <img src="{{ url_for('static', filename='img/recommendation.jpg')}}" alt="">
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </article>
+    </main>
+    <script>
+        let false1 = document.querySelector('.false_1');
+        let false2 = document.querySelector('.false_2');
+        let false3 = document.querySelector('.false_3');
+        let false4 = document.querySelector('.false_4');
+        let page = document.querySelector('.page-number');
+        let page1 = document.querySelector('.page-number_1');
+        let page2 = document.querySelector('.page-number_2');
+        let page3 = document.querySelector('.page-number_3');
+        let submitButton = document.querySelector('.submit-button');
+        let recommended = document.querySelector('#recommended');
+        let backProfile = document.querySelector('.back-profile');
+
+
+        backProfile.addEventListener('click', () => {
+            document.querySelector('.set-profile').classList.add('active');
+            document.querySelector('#recommendation-image').classList.remove('active');
+        });
+
+        recommended.addEventListener('click', () => {
+            document.querySelector('.set-profile').classList.remove('active');
+            document.querySelector('#recommendation-image').classList.add('active');
+        });
+    
+        page.addEventListener('click', () => {
+            false1.classList.add('active');
+            false2.classList.remove('active');
+            false3.classList.remove('active');
+            false4.classList.remove('active');
+            submitButton.classList.remove('active');
+            page1.classList.remove('active');
+            page.classList.add('active');
+            page2.classList.remove('active');
+            page3.classList.remove('active');
+
+        });
+    
+        page1.addEventListener('click', () => {
+            false1.classList.remove('active');
+            false2.classList.add('active');
+            false3.classList.remove('active');
+            false4.classList.remove('active');
+            submitButton.classList.remove('active');
+            page1.classList.add('active');
+            page.classList.remove('active');
+            page2.classList.remove('active');
+            page3.classList.remove('active');
+        });
+    
+        page2.addEventListener('click', () => {
+            false1.classList.remove('active');
+            false2.classList.remove('active');
+            false3.classList.add('active');
+            false4.classList.remove('active');
+            submitButton.classList.remove('active');
+            page2.classList.add('active');
+            page1.classList.remove('active');
+            page.classList.remove('active');
+            page3.classList.remove('active');
+        });
+    
+        page3.addEventListener('click', () => {
+            false1.classList.remove('active');
+            false2.classList.remove('active');
+            false3.classList.remove('active');
+            false4.classList.add('active');
+            submitButton.classList.add('active');
+            page3.classList.add('active');
+            page1.classList.remove('active');
+            page.classList.remove('active');
+            page2.classList.remove('active');
+        });
+    </script>
+    {% endblock%}
+
+</body>
+</html>

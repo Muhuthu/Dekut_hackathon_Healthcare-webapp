@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <link rel="icon" href="{{ url_for('static', filename='img/medical-icon.png')}}" type="image/x-icon"/>
+    <title>Home - iCarePulse</title>
+    <script src="https://kit.fontawesome.com/6d706e33e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../static/img/medical-icon.png">
+                <span>iCarePulse</span>
+            </div>
+    
+            <div class="nav_links">
+                <ul class="underline">
+                    {% if g.user %}
+                    <li class="reminder-links"><a href="#" class="reminder"><i class="fa-solid fa-bell"></i> <span class="span"><i class="fa-regular fa-calendar-check"></i></span></a></li>
+                    <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('auth.register')}}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login')}}" class="btnLogin-popup">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+      </header>
+    <main>
+        <article>
+            <section class="main-home-page">
+                <section class="left-home-page" >
+                    <div class="home-links">
+                        <span>Our Services</span>
+                    </div>
+                    <div class="home-links">
+                        <a href="{{ url_for('blog.profile')}}"><span>Profile</span></a>
+                    </div>
+                    <div class="home-links">
+                        <a href="{{ url_for('blog.medical_qr_alert')}}"><span>Medical QR Alert</span></a>
+                    </div>
+                    <div class="home-links">
+                        <a href="{{ url_for('cancer.index')}}"><span>Cancer Detection</span></a>
+                    </div>
+                    <div class="home-links">
+                        <a href="{{ url_for('blog.diagnosis')}}"><span>Diagnosis</span></a>
+                    </div>
+                    <div class="home-links">
+                        <a href="{{ url_for('blog.appointment')}}"><span>Appointment</span></a>
+                    </div>
+                </section>
+                <section class="right-carousel-page">
+                    <div class="carousel page" >
+                        <div class="list">
+
+                            <div class="item">
+                                <img src="{{ url_for('static', filename='img/images__16.png')}}" alt="">
+                                <div class="intro">
+                                    <div class="title">Early Breast Cancer Detection</div>
+                                    <div class="topic">Why an Early Breast Cancer Detection Module</div>
+                                    <div class="des">Integrating an early cancer detection module that utilizes mammogram forms and biopsy images is crucial for timely and accurate diagnosis of breast cancer. This functionality enables users to upload mammogram results and biopsy images, allowing for early identification of potential cancerous changes. Early detection significantly improves treatment outcomes and survival rates by catching the disease in its most treatable stages. By providing a reliable and user-friendly platform for early cancer detection, we aim to empower users with the tools they need to take proactive steps in their healthcare journey, ultimately contributing to better health and well-being.</div>
+                                    <button class="seeMore">See more &amp;</button>
+                                </div>
+                                <div class="detail">
+                                    <div class="title">Why an Early Breast Cancer Detection Module</div>
+                                    <div class="des">Building on the initial summary, the early cancer detection module leveraging mammogram forms and biopsy images offers several critical advantages that enhance its significance:</div>
+                                    <div class="specifications">
+                                        <div>
+                                            <ul>
+                                                <li>Advanced Diagnostic Accuracy: Utilizing mammogram data and biopsy images allows for a comprehensive analysis that improves the accuracy of early cancer detection. This dual approach helps in identifying even subtle changes that might be missed with single-method evaluations.</li>
+                                                <li>User-Friendly Interface for Uploads: The module provides an intuitive platform for users to upload mammogram forms and biopsy images easily. This user-friendly design ensures that patients and healthcare providers can quickly and efficiently share critical diagnostic information.</li>
+                                                <li>Integration with AI and Machine Learning: Incorporating AI algorithms to analyze mammogram and biopsy data enables the detection of cancerous changes with higher precision and speed. This technology supports early diagnosis by identifying patterns that may indicate cancer, often earlier than traditional methods.</li>
+                                                
+                                                
+                                            </ul>
+                                            <p>Early detection is critical in the fight against breast cancer. With early detection, the five-year survival rate is almost 100%. We must ensure that women everywhere have access to the resources they need to detect breast cancer at its earliest stages."
+                                                <span>from Nancy Brinker, the founder of Susan G. Komen for the Cure, a prominent breast cancer organization.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+
+                            <div class="item">
+                                <img src="{{ url_for('static', filename='img/images.png')}}" >
+                                <div class="intro">
+                                    <div class="title">Diagnosis</div>
+                                    <div class="topic">Why diagnosis?</div>
+                                    <div class="des">With a growing demand for quick and reliable health information, our diagnostic form serves as a valuable resource for users to identify potential health issues, leading to informed decisions and timely medical consultations. By integrating this feature, we are not only improving user engagement but also contributing to better health outcomes in our community.</div>
+                                    <button class="seeMore">See more ...</button>
+                                </div>
+                                <div class="detail">
+                                    <div class="title">Why Diagnosis?</div>
+                                    <div class="des">The diagnostic form on our website plays a crucial role in enhancing healthcare accessibility and quality for our users. By enabling users to input symptoms and receive preliminary assessments, it offers several key benefits:</div>
+                                    <div class="specifications">
+                                        <div>
+                                            <ul>
+                                                <li>Early Detection: The form allows for early identification of potential health issues, facilitating timely medical intervention and improving overall health outcomes.</li>
+                                                <li>User Empowerment: It empowers users to take proactive steps in managing their health, fostering self-awareness and informed decision-making about seeking professional care.</li>
+                                                <li>Accessibility: By providing an easy-to-use, online platform for health assessment, it breaks down barriers to healthcare, especially for those in remote areas or with limited access to medical facilities.</li>                                           <li>Resource Optimization: The form helps prioritize healthcare needs by distinguishing between cases that require immediate attention and those that can be managed with self-care or basic advice, thus optimizing healthcare resource allocation.</li>
+                                            </ul>
+                                            <p>
+                                                Integrating a diagnostic form into our website underscores our commitment to improving health outcomes through innovative and user-friendly solutions.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="{{ url_for('static', filename='img/diagnosis.png')}}" alt="">
+                                <div class="intro">
+                                    <div class="title">Appointment</div>
+                                    <div class="topic">Why Appointment?</div>
+                                    <div class="des">By providing a platform where users can book, manage, and track their healthcare appointments, we promote better health management and continuity of care. This addition reflects our commitment to making healthcare more accessible and organized for our users through reducing waiting times and improving overall patient experience, fostering a proactive approach to health and well-being.</div>
+                                    <button class="seeMore">See more &amp;</button>
+                                </div>
+                                <div class="detail">
+                                    <div class="title">Why Appointment?</div>
+                                    <div class="des"></div>
+                                    <div class="specifications">
+                                        <div>
+                                            <ul>
+                                                <li>Convenience: Users can schedule appointments at their convenience, reducing waiting times and ensuring timely access to healthcare services.</li>
+                                                <li>Cost Efficiency: Reducing no-shows and optimizing appointment schedules can lead to cost savings for both healthcare providers and patients. The efficient management of appointments helps in reducing overhead costs associated with missed appointments and administrative tasks.</li>
+                                                <li>Accessibility and Inclusivity: The online appointment system makes healthcare more accessible, particularly for individuals with mobility issues or those living in remote areas. It ensures that everyone has the opportunity to access timely medical care without physical barriers.</li>
+                                                <li>Reduced Waiting Times: By providing real-time availability and booking options, our web app minimizes waiting times for appointments. This efficiency not only improves the user experience but also ensures that healthcare providers can manage their schedules more effectively.</li>
+                                            </ul>
+                                            <p>By including appointment functionality in our web app, we are not only simplifying the process of accessing healthcare services but also contributing to a more organized, efficient, and patient-centered healthcare system. This feature aligns with our mission to enhance the overall healthcare experience and ensure that users receive timely and appropriate medical care.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="{{ url_for('static', filename='img/images__9.png')}}" alt="">
+                                <div class="intro">
+                                    <div class="title">Medical Alert QR Bracelet</div>
+                                    <div class="topic">Why a QR Code Alert?</div>
+                                    <div class="des">We integrated a form that generates a QR code for a medical alert bracelet to provide users with a quick and effective way to share crucial medical information in emergencies. The QR code stores essential health data, which can be easily accessed by first responders or healthcare professionals via a simple scan, ensuring timely and appropriate medical care. This feature enhances user safety by offering an immediate and reliable method for conveying vital medical details, such as allergies, conditions, and emergency contacts, thereby improving response times and care quality in critical situations.</div>
+                                    <button class="seeMore">See more &amp;</button>
+                                </div>
+                                <div class="detail">
+                                    <div class="title">Why a QR Code Alert?</div>
+                                    <div class="des">Continuing from the initial overview, the medical QR code bracelet offers several key advantages that enhance its value:</div>
+                                    <div class="specifications">
+                                        <div>
+                                            <ul>
+                                                <li>Instant Access to Critical Information: The QR code provides immediate access to essential medical details, such as allergies, medications, and existing conditions, enabling healthcare professionals to make informed decisions quickly.</li>
+                                                <li>Enhanced Safety and Preparedness: Users benefit from enhanced safety measures as emergency responders can swiftly gather vital health information, ensuring appropriate treatment even when the wearer is unable to communicate effectively.</li>
+                                                <li>User-Friendly and Universal Application: The bracelet’s QR code is universally readable with common smartphones, ensuring accessibility for healthcare providers worldwide, regardless of location or medical facility.</li>
+                                                
+                                            </ul>
+                                            <p>
+                                                By integrating this innovative functionality into our platform, we aim to empower users with a reliable and efficient method of communicating vital medical information during emergencies, ultimately improving outcomes and enhancing peace of mind for wearers and their caregivers.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="item">
+                                <img src="{{ url_for('static', filename='img/images.png')}}" >
+                                <div class="intro">
+                                    <div class="title">Diagnosis</div>
+                                    <div class="topic">Why diagnosis?</div>
+                                    <div class="des">With a growing demand for quick and reliable health information, our diagnostic form serves as a valuable resource for users to identify potential health issues, leading to informed decisions and timely medical consultations. By integrating this feature, we are not only improving user engagement but also contributing to better health outcomes in our community.</div>
+                                    <button class="seeMore">See more ...</button>
+                                </div>
+                                <div class="detail">
+                                    <div class="title">Why Diagnosis?</div>
+                                    <div class="des">The diagnostic form on our website plays a crucial role in enhancing healthcare accessibility and quality for our users. By enabling users to input symptoms and receive preliminary assessments, it offers several key benefits:</div>
+                                    <div class="specifications">
+                                        <div>
+                                            <ul>
+                                                <li>Early Detection: The form allows for early identification of potential health issues, facilitating timely medical intervention and improving overall health outcomes.</li>
+                                                <li>User Empowerment: It empowers users to take proactive steps in managing their health, fostering self-awareness and informed decision-making about seeking professional care.</li>
+                                                <li>Accessibility: By providing an easy-to-use, online platform for health assessment, it breaks down barriers to healthcare, especially for those in remote areas or with limited access to medical facilities.</li>                                           <li>Resource Optimization: The form helps prioritize healthcare needs by distinguishing between cases that require immediate attention and those that can be managed with self-care or basic advice, thus optimizing healthcare resource allocation.</li>
+                                            </ul>
+                                            <p>
+                                                Integrating a diagnostic form into our website underscores our commitment to improving health outcomes through innovative and user-friendly solutions.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="item">
+                                <img src="{{ url_for('static', filename='img/images__7.png')}}" alt="">
+                                <div class="intro">
+                                    <div class="title">Medical Alert QR Bracelet</div>
+                                    <div class="topic">Why a QR Code Alert?</div>
+                                    <div class="des">We integrated a form that generates a QR code for a medical alert bracelet to provide users with a quick and effective way to share crucial medical information in emergencies. The QR code stores essential health data, which can be easily accessed by first responders or healthcare professionals via a simple scan, ensuring timely and appropriate medical care. This feature enhances user safety by offering an immediate and reliable method for conveying vital medical details, such as allergies, conditions, and emergency contacts, thereby improving response times and care quality in critical situations.</div>
+                                    <button class="seeMore">See more &amp;</button>
+                                </div>
+                                <div class="detail">
+                                    <div class="title">Why a QR Code Alert?</div>
+                                    <div class="des">Continuing from the initial overview, the medical QR code bracelet offers several key advantages that enhance its value:</div>
+                                    <div class="specifications">
+                                        <div>
+                                            <ul>
+                                                <li>Instant Access to Critical Information: The QR code provides immediate access to essential medical details, such as allergies, medications, and existing conditions, enabling healthcare professionals to make informed decisions quickly.</li>
+                                                <li>Enhanced Safety and Preparedness: Users benefit from enhanced safety measures as emergency responders can swiftly gather vital health information, ensuring appropriate treatment even when the wearer is unable to communicate effectively.</li>
+                                                <li>User-Friendly and Universal Application: The bracelet’s QR code is universally readable with common smartphones, ensuring accessibility for healthcare providers worldwide, regardless of location or medical facility.</li>
+                                                
+                                            </ul>
+                                            <p>
+                                                By integrating this innovative functionality into our platform, we aim to empower users with a reliable and efficient method of communicating vital medical information during emergencies, ultimately improving outcomes and enhancing peace of mind for wearers and their caregivers.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="arrows">
+                            <button id="prev"><</button>
+                            <button id="back">go Back </button>
+                            <button id="next">></button>
+                        </div>
+                     </div>
+
+                     <div class="medical-qr">
+
+                     </div>
+                </section>
+            </section>
+        </article>
+    </main>
+<script>
+    let nextButton = document.getElementById('next');
+let prevButton = document.getElementById('prev');
+let backButton = document.getElementById('back');
+let seeMoreButtons = document.querySelectorAll('.seeMore')
+let carousel = document.querySelector(".carousel")
+let listHTML = document.querySelector(".carousel .list")
+
+
+nextButton.onclick = function(){
+    showSlider('next');
+}
+prevButton.onclick = function(){
+    showSlider('prev');
+}
+let unAcceptClick;
+const showSlider = (type) => {
+    nextButton.style.pointerEvents = 'none';
+    prevButton.style.pointerEvents = 'none';
+
+    carousel.classList.remove('prev', 'next');
+    let items = document.querySelectorAll('.carousel .list .item')
+    if(type === 'next'){
+        listHTML.appendChild(items[0]);
+        carousel.classList.add('next');
+    }else{
+        let positionLast = items.length - 1;
+        listHTML.prepend(items[positionLast]);
+        carousel.classList.add('prev');
+    }
+
+    clearTimeout(unAcceptClick)
+    unAcceptClick = setTimeout(() => {
+        nextButton.style.pointerEvents = 'auto'
+        prevButton.style.pointerEvents = 'auto'
+    }, 2000);
+}
+
+seeMoreButtons.forEach(button => {
+    button.onclick = function(){
+        carousel.classList.add('showDetails');
+    }
+})
+
+backButton.onclick = function(){
+    carousel.classList.remove('showDetails')
+}
+
+</script>
+</body>
+</html>

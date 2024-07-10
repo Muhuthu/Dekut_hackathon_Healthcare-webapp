@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}iCarePulse{% endblock%}</title>
+    <!--
+        png
+        -->
+    <link rel="icon" href="{{ url_for('static', filename='img/medical-icon.png')}}" type="image/x-icon"/>
+    <!--
+        css
+        -->
+        <link rel="stylesheet" href="../static/style.css">
+
+    <!--
+        icons
+        -->
+        <script src="https://kit.fontawesome.com/6d706e33e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!------- Header ----------->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../static/img/medical-icon.png">
+            <span>iCarePulse</span>
+        </div>
+
+        <div class="nav_links">
+            <ul class="underline">
+                {% if g.user %}
+                <li class="reminder-links"><a href="#" class="reminder"><i class="fa-solid fa-bell"></i> <span class="span"><i class="fa-regular fa-calendar-check"></i></span></a></li>
+                <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.register')}}">Register</a></li>
+                <li><a href="{{ url_for('auth.login')}}" class="btnLogin-popup">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+<section class="content">
+    <head>
+        {% block header%}
+        {% endblock%}
+    </head>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+</section>
+{% block content%}
+<!-------- Main ------------->
+    <main>
+        <article>
+            <section class="home">
+                <div class="contain">
+                    <div class="home-title">
+                        <div class="span">
+                        <span class="text1">Welcome To</span>
+                        <span class="text2">iCarePulse</span>
+                        </div>
+
+                        <div class="p-text">
+                            <p>
+                                iCare is an virtual toolkit for healthcare. This web app allows user to generate medical
+                                alert barcode, using machine learning concepts it also checks possibility of one having
+                                breast cancer through analysis of mammogram form and biopsy images.This web app allows users
+                                to schedule appointments with different doctors and get reminded of their appointments. We
+                                also have a diagnosis form where users can fill out and get responded by doctors about their illness. 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="image">
+                        <img src="../static/img/why-us.png" alt="">
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="about">
+            <div class="about-text">
+                <p>
+                    Know more about team 20.
+                </p>
+            </div>
+            <button>About</button>
+        </div>
+    </footer>
+{% endblock %}
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>

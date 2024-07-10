@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyMedical</title>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{url_for('static', filename='diagnosis.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <link rel="icon" href="{{ url_for('static', filename='img/medical-icon.png')}}" type="image/x-icon"/>
+    <title>Appointment - iCarePulse</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../static/img/medical-icon.png">
+                <span>iCarePulse</span>
+            </div>
+    
+            <div class="nav_links">
+                <ul class="underline">
+                    {% if g.user %}
+                    <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('auth.register')}}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login')}}" class="btnLogin-popup">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+      </header>
+    <main>
+        <article>
+            <section class="main-home-page">
+                <section class="left-home-page">
+                    <div class="return-home">
+                        <a href="{{ url_for('blog.home')}}"><i class="fa-solid fa-home"></i><span>Home</span></a>
+                    </div>
+                    <div class="home-profile">
+                        <div>
+                            <img src="{{ url_for('static', filename='img/images.png')}}" >
+                        </div>
+                        <div>
+                            <p>
+                                Appointment
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="right-home-page">
+                    <div class= "doctorcontact">
+                        <div class= "drimg"><img src="{{ url_for('static', filename='img/doctor-one.png')}}" width= "30%;" style = "float: left"></div>
+                        <div class= "drdescription">
+                            <h4 class= "drtitle">Dr. Smith</h4>
+                            <h6 class= "drspecialties">Specialties:</h6>
+                            <p class="drexpertises2">Foot and Ankle Orthopedic Surgery and Orthopedic Surgery</p>
+                            <form action="/appointments" method = "POST">
+                                <label for="appointmenttime">Appointment date and time:</label>
+                                <input type="datetime-local" id="appointmenttime" name="appointmenttime" required/>
+                                <input id="docId" name="doctorName" type="hidden" value="Dr. Smith">
+                                <button>Make An Appointment</button>
+                            </form>
+                      </div>
+                      </div>
+                
+                
+                    <div class= "doctorcontact">
+                        <div class= "drimg"><img src="{{ url_for('static', filename='img/doctor-two.png')}}" width= "30%;" style = "float: left"></div>
+                        <div class= "drdescription">
+                        <h4 class= "drtitle">Dr. Martinez</h4>
+                        <h6 class= "drspecialties">Specialties:</h6>
+                        <p class="drexpertises2">Family Medicine and Sports Medicine</p>
+                        <form action="/appointments" method = "POST">
+                            <label for="appointmenttime">Appointment date and time:</label>
+                            <input type="datetime-local" id="appointmenttime" name="appointmenttime" required/>
+                            <input id="docId" name="doctorName" type="hidden" value="Dr. Martinez">
+                            <button>Make An Appointment</button>
+                        </form>
+                        </div>
+                    </div>
+                
+                    <div class= "doctorcontact">
+                        <div class= "drimg"><img src="{{ url_for('static', filename='img/doctor-three.png')}}" width= "30%;" style = "float: left"></div>
+                        <div class= "drdescription">
+                        <h4 class= "drtitle">Dr. Garcia</h4>
+                        <h6 class= "drspecialties">Specialties:</h6>
+                        <p class="drexpertises2">Obstetrics and Gynecology</p>
+                        <form action="/appointments" method = "POST">
+                            <label for="appointmenttime">Appointment date and time:</label>
+                            <input type="datetime-local" id="appointmenttime" name="appointmenttime" required/>
+                            <input id="docId" name="doctorName" type="hidden" value="Dr. Garcia">
+                            <button>Make An Appointment</button>
+                        </form>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </article>
+    </main>
+    </body>
+</html>

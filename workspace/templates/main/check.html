@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+    <link rel="stylesheet" href="{{url_for('static', filename='diagnosis.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <link rel="icon" href="{{ url_for('static', filename='img/medical-icon.png')}}" type="image/x-icon"/>
+    <title>Diagnosis - iCarePulse</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../static/img/medical-icon.png">
+                <span>iCarePulse</span>
+            </div>
+    
+            <div class="nav_links">
+                <ul class="underline">
+                    {% if g.user %}
+                    <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('auth.register')}}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login')}}" class="btnLogin-popup">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+      </header>
+
+    <main>
+        <article>
+            <section class="main-home-page">
+                <section class="left-home-page">
+                    <div class="return-home">
+                        <a href="{{ url_for('blog.home')}}"><i class="fa-solid fa-home"></i><span>Home</span></a>
+                    </div>
+                    <div class="home-profile">
+                        <div>
+                            <img src="{{ url_for('static', filename='img/diagnosis.png')}}" alt="">
+                        </div>
+                        <div>
+                            <p>
+                                Diagnosis
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="right-home-page">
+                    <div class="testbox">
+                        <form action="/diagnosis" method="POST">
+                            <br/>
+                            <p class="check-text">By filling this form, our doctors can better diagnose your illness. They will get back to you as soon as they can!</p>
+                            <br/>
+                            <div class="colums">
+                                <div class="item">
+                                    <label for="name">Name<span>*</span></label>
+                                    <input id="Name" type="text" name="name" required/>
+                                </div>
+                                <div class="item">
+                                    <label for="eaddress">Email Address<span>*</span></label>
+                                    <input id="Email" type="text"   name="eaddress" required/>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>Have you been experiencing these symptoms for more than a week?</label>
+                                <div class="question-answer">
+                                    <div>
+                                        <input type="radio" value="none" id="radio_1" name="time" required/>
+                                        <label for="radio_1" class="radio"><span>Yes</span></label>
+                                    </div>
+                                    <div>
+                                        <input  type="radio" value="none" id="radio_2" name="time" />
+                                        <label for="radio_2" class="radio"><span>No</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="question">
+                                <label>Are you over the age of 60?</label>
+                                <div class="question-answer">
+                                    <div>
+                                        <input type="radio" value="none" id="radio_3" name="age" />
+                                        <label for="radio_3" class="radio"><span>Yes</span></label>
+                                    </div>
+                                    <div>
+                                        <input  type="radio" value="none" id="radio_4" name="age" required/>
+                                        <label for="radio_4" class="radio"><span>No</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="question">
+                                <label>Do you have any other underlying conditions (cardiovascular disease, diabetes, chronic respiratory diseases etc)?</label>
+                                <div class="question-answer">
+                                    <div>
+                                        <input type="radio" value="none" id="radio_5" name="condition" />
+                                        <label for="radio_5" class="radio"><span>Yes</span></label>
+                                    </div>
+                                    <div>
+                                        <input  type="radio" value="none" id="radio_6" name="condition" required/>
+                                        <label for="radio_6" class="radio"><span>No</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="question">
+                                <label>Do you consistently exercise and maintain a healthy diet?</label>
+                                <div class="question-answer">
+                                    <div>
+                                        <input type="radio" value="none" id="radio_7" name="habit" required/>
+                                        <label for="radio_7" class="radio"><span>Yes</span></label>
+                                    </div>
+                                    <div>
+                                        <input  type="radio" value="none" id="radio_8" name="habit" required/>
+                                        <label for="radio_8" class="radio"><span>No</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="item">
+                                <label for="visit">Is there anything else you would like to let us know?</label>
+                                <textarea id="visit" rows="3"></textarea>
+                            </div>
+                            <div class="btn-block">
+                                <button onclick="submitForm();">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </section>
+        </article>
+    </main>
+
+    <script>
+        function submitForm(){
+            let name = document.getElementById("Name").value;
+            let email =document.getElementById("Email").value;
+          
+            if (name && email){
+              alert("Thank you for submitting! A doctor will get back to you shortly");
+            }
+          }
+          
+    </script>
+
+</body>
+</html>

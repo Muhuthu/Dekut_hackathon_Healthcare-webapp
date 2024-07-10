@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%extends 'index.html'%}
+    {% block title%}Home - iCarePulse{% endblock%}
+</head>
+<body>
+    {% block content%}
+    <main>
+        <article>
+            <section class="main-home-page">
+                <section class="left-home-page">
+                    <div class="return-home">
+                        <a href="{{ url_for('blog.home')}}"><i class="fa-solid fa-home"></i><span>Home</span></a>
+                    </div>
+                    <div class="home-profile">
+                        <div>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <p>
+                                Profile
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-swap">
+                        <div id="edit-profile"><span>Edit</span></div>
+                        <div id="button-profile"><span>View</span></div>
+                    </div>
+                </section>
+                <section class="right-home-page">
+                    <div class="set-profile active">
+                        <h2>Set your profile</h2>
+                        <form method="post">
+                            <div class="profile-input">
+                                <label for="email">Enter your email address:</label>
+                                <input type="email" name="email" id="email">
+                            </div>
+                            <div class="profile-input">
+                                <label for="username">Enter your username:</label>
+                                <input type="text" name="username" id="username">
+                            </div>
+                            <div class="profile-input">
+                                <label for="name">Enter your First name:</label>
+                                <input type="text" name="name" id="name">
+                            </div>
+                            <div class="profile-input">
+                                <label for="surname">Enter your Surname:</label>
+                                <input type="text" name="surname" id="surname">
+                            </div>
+                            <div class="profile-input">
+                                <label for="dob"></label>
+                                <input type="date" name="dob" id="dob">
+                            </div>
+                            <div class="profile-input">
+                                <label for="sex">Enter your sex:</label>
+                                <input type="text" name="sex" id="sex">
+                            </div>
+                            <div class="button-profile">
+                                <button type="submit">set profile</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="set-profile" id="view-profile">
+                        
+                        <div class="profile-head">
+                            <img src="{{ url_for('static', filename='img/profileimg.png')}}" class="profile-img">
+                            <h2>Your profile</h2>
+                        </div>
+                        <div class="profile-info">
+                            <p>Email: <span id="yourEemail"> {{email}}</span></p>
+                            <p>Username: <span id="yourUsername">{{username}}</span></p>
+                            <p>First name: <span id="yourName">{{name}}</span></p>
+                            <p>Surname: <span id="yourSurname">{{surname}}</span></p>
+                            <p>Date of birth: <span id="yourDob">{{dob}}</span></p>
+                            <p>Sex: <span id="yourSex">{{sex}}</span></p>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </article>
+    </main>
+    
+    {% endblock%}
+<script src="../static/js/script.js"></script>
+</body>
+</html>
